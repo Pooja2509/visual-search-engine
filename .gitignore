@@ -1,0 +1,32 @@
+# Virtual environment
+venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Data files (too large for Git — store elsewhere)
+data/raw/
+data/embeddings/
+models/*.pth
+indexing/*.faiss
+
+# Processed data (can be regenerated)
+data/processed/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Pytest cache
+.pytest_cache/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Environment variables
+.env

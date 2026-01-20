@@ -1,0 +1,13 @@
+torch
+torchvision
+faiss-cpu
+fastapi
+uvicorn[standard]
+python-multipart
+streamlit
+Pillow
+numpy
+pandas
+matplotlib
+scikit-learn
+tqdm
