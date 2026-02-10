@@ -1,0 +1,28 @@
+# Virtual environment (we install fresh in Docker)
+venv/
+__pycache__/
+*.pyc
+
+# Notebooks (not needed for production)
+notebooks/
+
+# Tests (not needed in production image)
+tests/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+
+# Baseline embeddings (we only use finetuned)
+data/embeddings/baseline_embeddings.npy
+data/embeddings/baseline_ids.npy
+
+# IVF index (we only use flat)
+indexing/ivf_index.faiss

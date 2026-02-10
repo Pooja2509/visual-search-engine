@@ -1,0 +1,40 @@
+# Docker Compose — run API + Frontend together
+# Usage: docker compose up --build
+
+services:
+
+  # ============================
+  # Service 1: FastAPI Backend
+  # ============================
+  api:
+    build: .                    # Build from Dockerfile in current directory
+    container_name: visual-search-api
+    ports:
+      - "8000:8000"             # Map host port 8000 → container port 8000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s             # Check every 30 seconds
+      timeout: 10s              # Fail if no response in 10 seconds
+      retries: 3                # Mark unhealthy after 3 failures
+      start_period: 60s         # Wait 60s before first check (model loading)
+    restart: unless-stopped     # Auto-restart if container crashes
+
+  # ============================
+  # Service 2: Streamlit Frontend
+  # ============================
+  frontend:
+    build: .                    # Same Dockerfile (has both API + frontend code)
+    container_name: visual-search-frontend
+    ports:
+      - "8501:8501"             # Map host port 8501 → container port 8501
+    # Override the default CMD to run Streamlit instead of uvicorn
+    command: >
+      streamlit run frontend/app.py
+      --server.port=8501
+      --server.address=0.0.0.0
+      --browser.gatherUsageStats=false
+    environment:
+      - API_URL=http://api:8000    # Frontend talks to API using service name
+    depends_on:
+      - api                     # Start API before frontend
+    restart: unless-stopped
