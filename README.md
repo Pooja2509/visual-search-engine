@@ -4,6 +4,17 @@ A production-grade visual search system that finds visually similar fashion prod
 
 **Upload a fashion image → Get visually similar products in milliseconds.**
 
+## Demo
+
+### Search Results
+![Search Results](docs/screenshots/search_results.png)
+
+### API Documentation (Swagger UI)
+![API Docs](docs/screenshots/api_docs.png)
+
+### Docker Containers Running
+![Docker Running](docs/screenshots/docker_running.png)
+
 ## Architecture
 
 ```
